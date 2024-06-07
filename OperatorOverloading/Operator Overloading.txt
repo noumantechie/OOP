@@ -1,0 +1,51 @@
+Operator Overloading is an approach defining multiple behavioirs to an operator and those behaviours will vary based on the operand types between which the operator is used.
+
+Example:
++ is an addition operator WWhen used between 2 numeric operands
+And it is an Concatenation operator When used between 2 String Operands.
+
+
+Some Common operator methods are to be implemented in the Libraries.
+
+Public static int operator + (int a , int b)
+Public static int operator -(int a , int b)
+
+
+Public static int operator + (string a , string b)
+
+Public static int operator + (string a , string b) // Invalid because there is no Predefined method in Library class
+
+
+
+Public static int operator bool (int a , int b) // For Comparsion
+Public static int operator < (int a , int b)
+
+
+Example:
+
+Matrix m1 = new Matrix(20,18,16,14)
+Matrix m2 = new Matrix(10,8,6,4);
+
+Logic :
+Matrix m3 = new Matrix(m1.a + m2.a , m1.b + m2.b , m1.c + m2.c, m1.d + m2.d) 
+ 
+Can we Directly do that ?
+
+Matrix m3 = m1 + m2; //This give error becasue there is no implentation in library class
+
+public statuc Matrix operator +(Matrix obj1 , obj2){
+
+
+}
+
+
+
+
+Computer a lot confusions what the matrix what and how many paramters etc so , simply they print the class name.
+
+How to do the Print of Class Name ?
+
+public static void WriteLine(object value) {
+string TypeName = value.ToString(); // Every class by default inherit 4 methods from object class
+// This To String method return the name of the class
+Console.WriteLine(TypeName)
