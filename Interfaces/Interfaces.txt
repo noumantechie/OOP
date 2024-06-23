@@ -1,0 +1,49 @@
+Interfaces:
+Are Defined "interface keyword".
+1- Contains Only Abstract Methods(Methods with out method body).
+2- Every member of an interface should be implemented by the child class of the interface without fail(Mandatory) but while implementing we don't require to use override modifier just like we have do in case of abstract class.
+3- A class has also a interface as a parent (class is inheriting from interface now) then child class is Responsile for Giving the implementation for all the abstract methods that are  present in the interface.
+4- Generaly a class inherits from another class to consume the members of its parent , Where as if a class is inheriting from an interface it is to implement the members of its parent.
+5- A class can inherit from a class and interface at a time.
+6- Make a Habit when you creating a interface then "I" is the Staring Charcter.
+7- The Default scope the members of an interface is public whereas it's private in case of a class.
+8- By Default Every member of an interface is abstract So , we don't require to use abstract modifier on it again . Just Like we do in case of abstract class. 
+e.g	void Add(int a , int b );{}
+9- We can't declare any field/variables under an interface.
+10- If Required an interface can inherit from another interface.
+11- We cannot create an instance of interface but we can create refrence of an Interface by using the child object.
+12- If a base class implements an interface , all the derived classes inherit that implementation.
+
+
+Multiple Inheritance with Interface:
+
+Even If multiple inheritance us not supported through classes in CSharp, it is still supported through interfaces.
+
+-A Class can have one and only one immediate parent class , wheras the same class can have any number of interfaces as it's parent.
+Ie. Multiple inheritance is supported in CSharp through interfaces.
+
+
+
+
+Charcterisics:
+
+
+
+
+
+
+
+
+
+
+
+
+
+Note:
+
+Class : Non-Abstract Methods(Methods with method body)
+
+Abstract Class : Non-Abstract Methods(Methods with method body) and also Abstract Methods(Methods with out method body).
+
+Interface: Contains Only Abstract Methods(Methods with out method body).
+

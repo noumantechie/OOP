@@ -1,0 +1,32 @@
+
+Inheritence :
+- Parent-Child Relationship. 
+- Provide code reuseabilty.
+
+Sytanx:
+<modifers> class <cildclass> : <Parent Class>
+Public childClass : ParentClass
+
+Rules:
+1- Parent Classes Constructor must be accessiblle to child class , Otherwise inheritance will not be possible.
+
+2- In inheritance child class can access parent class members but parent classes can never access any member that is purity under the child class.
+
+3- We can initalize a parent classes variable by using the child class instance to make it as a refrence , so that the refrence will consuming the memory of child class instance , but in this case also we can't call any pure child class members by using the refrence.
+Example :
+In Main
+Class1 p; // p is a variable of class1 that is uninitalized form.
+class2 c = new class2();
+p = c;
+
+4- Every class that is defined by us or pre-defined in the libraries of the language has a default parent class i.e object class of system namespace , So ,the members of the object class (Equal , GetHashcode , GetType , ToString) are accessible from any where.
+
+5- In C-Sharp we don't have support for multiple inheritance through classes , what we are provided is only single inheritancr through classes.
+
+6- In the First Point we learn whenever child class instance is created , child class constructor will imlicity call its parent classes constructor but only if the constructor is parameterless.
+
+If the constructor is parameterized child class constructor can't implicitly call its parent class constructor So , To overcome this problem we need "base" keyword for explicitly call the parent class constructor.
+
+Note: If at all a class has 1 immediate parent class to it we call it as a single inheritance and if it has more than 1 immediate parent class to it we call it is multiple inheritance .
+
+Base class constructor must be public because base class constructor should be accessible to derived class and dervied class has any child class then derived class constructor must be public.

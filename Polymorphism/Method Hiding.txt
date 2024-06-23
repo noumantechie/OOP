@@ -1,0 +1,20 @@
+Method Hiding /Shadowing
+1- It is an Apprach of re-implementing  a parent classes method under the child class with same signature , same name and same paramenters.
+2- In Overridding child class re-implements the parent's class methods which are declared as virtual, Where as in the Method Hiding  child class can re-implement any parents's method even             method is not declared as virtual.
+3- we used just "new keyword in the child class" to tell the complier we make method by same name intentionally.
+
+
+Example:
+
+Clas1 { public void Test();}
+
+Class2 : Class1 { public new void Test(); }
+
+
+NOTE / DIIFERENCE  BETWEEN OVERRIDING AND OVERHIDDING
+
+In Overriding a parent class refrence can call chil classes overhide members but In overhidding a parent class refrence cannot call the child class method which is re-implemented by using hiding approach So , Cannot access any members that are purely defined under child class.
+
+ChildClass c = new ChildClass(); // c is is the instance of child class
+
+ParentClass p = c; // P is a refrence of parent class created by using child's class instance/

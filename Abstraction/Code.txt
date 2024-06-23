@@ -1,0 +1,161 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AbstractPolymorphosim
+{
+    internal class Program
+    {
+        class MenuItem
+        {
+            public int ItemId { get; set; }
+            public string Name { get; set; }
+            public double price { get; set; }
+
+            public void DisplayItemDetails()
+            {
+                Console.WriteLine($"Item Id = {ItemId} , Name = {Name} , Price = {price} ");
+            }
+
+        }
+
+        class OrderItem
+        {
+            public MenuItem MenuItem { get; set; } // className also a datatype
+            public int Quantity { get; set; }
+
+            public double CalculateItemCost()
+            {
+                return MenuItem.price * Quantity;
+            }
+        }
+
+        abstract class Order
+        {
+            public int OrderId { get; set; }
+            public DateTime orderDate { get; set; }
+
+            public List<OrderItem> ordersItems { get; set; } = new List<OrderItem>();
+
+            public double TotalCost { get; set; }
+
+            public abstract void CalculateTotalCost();
+
+
+
+
+
+        }
+
+        class DineInOrders : Order
+        {
+            public double ServiceCharges { get; set; }
+
+            public override void CalculateTotalCost()
+            {
+                double subTotal = 0;
+                foreach (OrderItem item in ordersItems)
+                {
+                    subTotal += item.CalculateItemCost();
+                }
+                TotalCost = subTotal + ServiceCharges;
+            }
+        }
+
+        class TakeoutOrder : Order
+        {
+            public double PackagingFee { get; set; }
+
+            public override void CalculateTotalCost()
+            {
+                double subToal = 0;
+                foreach (OrderItem item in ordersItems)
+                {
+                    subToal += item.CalculateItemCost();
+                }
+
+                TotalCost = subToal + PackagingFee;
+
+            }
+        }
+
+        class ResturantOrderSystem
+        {
+            public void PlaceOrder (Order order)
+            {
+                Console.WriteLine("Order is Placed");
+                order.CalculateTotalCost();
+            }
+
+            public void AddItemsToOrder (Order order , OrderItem item)
+            {
+                Console.WriteLine("Item Added in the Order");
+                order.ordersItems.Add(item);
+            }
+            public void DisplayOrderDetails (Order order)
+            {
+                Console.WriteLine($"Order Id: {order.OrderId}, Order Date {order.orderDate}");
+                Console.WriteLine("Order Items are : ");
+
+                foreach (var item in order.ordersItems)
+                {
+                    item.MenuItem.DisplayItemDetails();
+
+                    Console.WriteLine($"Quantity = {item.Quantity} , item Cost = {item.CalculateItemCost()}");
+                }
+                Console.WriteLine($"Total Cost = {order.TotalCost}");
+            }
+
+        }
+
+
+
+            static void Main(string[] args)
+        {
+            ResturantOrderSystem orderSystem = new ResturantOrderSystem();
+
+            MenuItem menuItem1 = new MenuItem { ItemId = 1, Name = "Sandwitch", price = 80 };
+
+            MenuItem menuItem2 = new MenuItem { ItemId = 2, Name = "Burger", price = 100 };
+
+            OrderItem orderItem1 = new OrderItem { MenuItem = menuItem1, Quantity = 2 };
+
+            OrderItem orderItem2 = new OrderItem { MenuItem = menuItem2, Quantity = 1 };
+
+            DineInOrders dinInOrders = new DineInOrders { OrderId = 1, orderDate = DateTime.Now, ServiceCharges=10};
+
+            dinInOrders.ordersItems.Add(orderItem1);
+            dinInOrders.ordersItems.Add(orderItem2);
+
+
+            orderSystem.PlaceOrder(dinInOrders);
+
+            orderSystem.DisplayOrderDetails(dinInOrders);
+
+            Console.ReadLine();
+
+            OrderItem takeoutOrderItem = new OrderItem { MenuItem = menuItem2, Quantity = 2 };
+
+
+            TakeoutOrder takeoutOrder = new TakeoutOrder { OrderId= 2 , orderDate= DateTime.Now , PackagingFee = 10 };
+
+            takeoutOrder.ordersItems.Add(takeoutOrderItem);
+
+            orderSystem.PlaceOrder(takeoutOrder);
+
+            orderSystem.DisplayOrderDetails(takeoutOrder);
+
+
+
+
+
+
+
+
+            Console.ReadLine();
+        } 
+            
+    }
+}

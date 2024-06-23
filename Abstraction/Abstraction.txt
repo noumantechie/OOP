@@ -1,0 +1,30 @@
+Abstract Methods:
+1- A method without any method body is known as abstract method .
+2- What the Method contains is only Declartion of the method.
+3- A Class contains any abstract members in it but it must do that the class will also declared as "abstract keyword".
+4- Implement each and every abstract method of parent class . Now only we can consume non-abstract methods of parent class under the child class.
+5- From where we implication the abstract method we used "override keyword" Just like we used in the overriding.
+
+Syantax :
+
+Public abstract void Add(int x , int y).
+
+Example:
+
+Abstract class Class1 { public abstract void show(); }
+
+Class Class2 : Class1 { Public override void show() }
+
+
+
+
+Note:
+
+Class : Non-Abstract Methods(Methods with method body)
+
+Abstract Class : Non-Abstract Methods(Methods with method body) and also Abstract Methods(Methods with out method body).
+
+Interface: Contains Only Abstract Methods(Methods with out method body).
+
+
+
